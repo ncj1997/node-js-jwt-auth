@@ -24,18 +24,18 @@ db.sequelize.sync();
 // force: true will drop the table if it already exists
 // db.sequelize.sync({force: true}).then(() => {
 //   console.log('Drop and Resync Database with { force: true }');
-//   initial();
+  initial();
 // });
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to  application." });
 });
 
 // routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
-
+require("./app/routes/turorial.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
