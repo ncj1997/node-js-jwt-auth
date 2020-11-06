@@ -5,10 +5,10 @@ module.exports = app => {
   var router = require("express").Router();
 
   // Create a new Tutorial
-  router.post("/", tutorials.create);
+  router.post("/", [authJwt.verifyToken, authJwt.isAdmin], tutorials.create);
 
   // Retrieve all Tutorials
-  router.get("/", [authJwt.verifyToken, authJwt.isAdmin], tutorials.findAll);
+  router.get("/", tutorials.findAll);
 
   // Retrieve all published Tutorials
   router.get("/published", tutorials.findAllPublished);
